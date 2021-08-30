@@ -10,24 +10,24 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.devsuperior.hrworker.entities.Worker;
-import com.devsuperior.hrworker.repositories.WorkerRepository;
+import com.devsuperior.hrworker.services.WorkerService;
 
 @RestController
 @RequestMapping(value="/workers")
 public class WorkerResource {
 	
 	@Autowired
-	private WorkerRepository workerRepository;
+	private WorkerService  workerService;
 	
 	@GetMapping
 	public ResponseEntity<List<Worker>> findAll(){
-		List<Worker> lstWorker = workerRepository.findAll();
+		List<Worker> lstWorker = workerService.findAll();
 		return ResponseEntity.ok(lstWorker);
 	}
 	
 	@GetMapping(value="/{id}")
 	public ResponseEntity<Worker> findById(@PathVariable Long id) {
-		Worker objWorker = workerRepository.findById(id).get();
+		Worker objWorker = workerService.findById(id);
 		return ResponseEntity.ok(objWorker);
 	}
 
