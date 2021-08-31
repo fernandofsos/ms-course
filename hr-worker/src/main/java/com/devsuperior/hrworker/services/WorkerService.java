@@ -12,6 +12,8 @@ import com.devsuperior.hrworker.repositories.WorkerRepository;
 @Service
 public class WorkerService {
 		
+
+	
 	@Autowired
 	private WorkerRepository workerRepository;
 	
